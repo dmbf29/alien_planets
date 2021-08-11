@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_081615) do
+ActiveRecord::Schema.define(version: 2021_08_11_085620) do
 
   create_table "aliens", force: :cascade do |t|
     t.string "name"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2021_08_11_081615) do
 
   create_table "planets", force: :cascade do |t|
     t.string "name"
-    t.string "type"
     t.string "image_url"
     t.integer "alien_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
     t.index ["alien_id"], name: "index_planets_on_alien_id"
   end
 

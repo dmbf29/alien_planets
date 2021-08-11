@@ -1,0 +1,18 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @alien.banner_url %>%);">
+  <div class="container">
+    <h1><%= @alien.name %></h1>
+    <%= link_to 'Conquer Planet', new_alien_planet_path(@alien), class: "btn btn-danger mt-2" %>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="cards">
+    <% @alien.planets.each do |planet| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= planet.image_url %>)">
+        <%= planet.name %>
+        <%= link_to planet_path(planet), method: :delete, class: 'card-remove-link', data: { confirm: "Destroy #{planet.name}?"} do %>
+          <i class="fas fa-meteor"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
