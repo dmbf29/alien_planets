@@ -2,8 +2,9 @@ class PlanetBiomesController < ApplicationController
   def new
     @planet = Planet.find(params[:planet_id])
     @planet_biome = PlanetBiome.new
-    # @biomes = Biome.where.not(id: @planet.biomes).order(name: :asc)
-    @biomes = !@planet.biomes.order(name: :asc)
+    @biomes = Biome.where.not(id: @planet.biomes).order(name: :asc)
+    # @biomes = !@planet.biomes.order(name: :asc)
+    raise
   end
 
   def create
@@ -13,7 +14,7 @@ class PlanetBiomesController < ApplicationController
     if @planet_biome.save
       redirect_to alien_path(@planet.alien)
     else
-      @biomes = !@planet.biomes.order(name: :asc)
+      @biomes = Biome.where.not(id: @planet.biomes).order(name: :asc)
       render :new
     end
   end
