@@ -1,4 +1,5 @@
 Alien.destroy_all if Rails.env.development?
+Biome.destroy_all if Rails.env.development?
 
 alien = Alien.new(name: 'Zorg', banner_url: 'https://i.imgur.com/DZdFxS6.jpeg')
 alien.save!
@@ -51,3 +52,8 @@ Planet.create!(
   category: "solid",
   alien: alien
 )
+
+biomes = ['forest', 'ocean', 'desert', 'tundra', 'plains', 'tropical']
+biomes.each do |biome|
+  Biome.create!(name: biome)
+end

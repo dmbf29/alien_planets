@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_085620) do
+ActiveRecord::Schema.define(version: 2021_08_12_081202) do
 
   create_table "aliens", force: :cascade do |t|
     t.string "name"
     t.string "banner_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "biomes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "planet_biomes", force: :cascade do |t|
+    t.integer "planet_id", null: false
+    t.integer "biome_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["biome_id"], name: "index_planet_biomes_on_biome_id"
+    t.index ["planet_id"], name: "index_planet_biomes_on_planet_id"
   end
 
   create_table "planets", force: :cascade do |t|
@@ -29,5 +44,7 @@ ActiveRecord::Schema.define(version: 2021_08_11_085620) do
     t.index ["alien_id"], name: "index_planets_on_alien_id"
   end
 
+  add_foreign_key "planet_biomes", "biomes"
+  add_foreign_key "planet_biomes", "planets"
   add_foreign_key "planets", "aliens"
 end

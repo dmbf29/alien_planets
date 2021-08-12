@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h1>Add Biome</h1>
+      <%= simple_form_for [@planet, @planet_biome] do |f| %>
+        <%= f.association :biome, include_blank: false, collection: @biomes, input_html: { class: 'select2' } %>
+        <%= f.submit 'Add', class: 'btn btn-success mt-2' %>
+      <% end %>
+    </div>
+  </div>
+</div>

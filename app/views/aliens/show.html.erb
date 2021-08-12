@@ -9,8 +9,16 @@
     <% @alien.planets.each do |planet| %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= planet.image_url %>)">
         <%= planet.name %>
+        <div class="card-tags">
+          <% planet.biomes.each do |biome| %>
+            <span style="background-color: <%= biome_color(biome) %>"><%= biome.name %></span>
+          <% end %>
+        </div>
         <%= link_to planet_path(planet), method: :delete, class: 'card-remove-link', data: { confirm: "Destroy #{planet.name}?"} do %>
           <i class="fas fa-meteor"></i>
+        <% end %>
+        <%= link_to new_planet_planet_biome_path(planet), class: 'card-add-link' do %>
+          <i class="fas fa-plus-circle"></i>
         <% end %>
       </div>
     <% end %>
