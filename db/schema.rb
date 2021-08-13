@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_08_12_081202) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "aliens", force: :cascade do |t|
     t.string "name"
     t.string "banner_url"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 2021_08_12_081202) do
   end
 
   create_table "planet_biomes", force: :cascade do |t|
-    t.integer "planet_id", null: false
-    t.integer "biome_id", null: false
+    t.bigint "planet_id", null: false
+    t.bigint "biome_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["biome_id"], name: "index_planet_biomes_on_biome_id"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_081202) do
   create_table "planets", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
-    t.integer "alien_id", null: false
+    t.bigint "alien_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"

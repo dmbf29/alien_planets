@@ -4,7 +4,6 @@ class PlanetBiomesController < ApplicationController
     @planet_biome = PlanetBiome.new
     @biomes = Biome.where.not(id: @planet.biomes).order(name: :asc)
     # @biomes = !@planet.biomes.order(name: :asc)
-    raise
   end
 
   def create
