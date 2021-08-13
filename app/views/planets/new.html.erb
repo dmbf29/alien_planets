@@ -5,7 +5,8 @@
       <%= simple_form_for [@alien, @planet] do |f| %>
         <%= f.input :name %>
         <%= f.input :category, collection: ['gas', 'solid'], include_blank: false %>
-        <%= f.input :image_url %>
+        <%#= f.input :image_url %>
+        <%= f.input :photo, as: :file %>
         <%= f.submit 'Conquer', class: 'btn btn-danger mt-2' %>
       <% end %>
     </div>

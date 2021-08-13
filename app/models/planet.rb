@@ -4,4 +4,5 @@ class Planet < ApplicationRecord
   # planet.planet_biomes
   has_many :biomes, through: :planet_biomes
   validates :name, presence: true
+  has_one_attached :photo
 end

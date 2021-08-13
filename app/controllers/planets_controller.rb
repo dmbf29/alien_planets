@@ -24,7 +24,7 @@ class PlanetsController < ApplicationController
   private
 
   def planet_params
-    params.require(:planet).permit(:name, :image_url, :category)
+    params.require(:planet).permit(:name, :photo, :image_url, :category)
   end
 
   def set_alien
